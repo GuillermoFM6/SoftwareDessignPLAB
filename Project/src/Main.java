@@ -13,5 +13,6 @@ public class Main {
     clock.start();
     wait(11);
     clock.stop();
+    System.out.println("ALADIN GAAAAAY");
   }
 }
