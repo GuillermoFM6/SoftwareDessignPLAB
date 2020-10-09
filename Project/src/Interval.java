@@ -7,6 +7,7 @@ public class Interval implements Observer {
   private LocalDateTime initialDate;
   private LocalDateTime finalDate;
   private  Clock clock = new Clock(2);
+  private long duration;
 
   public Interval(Task task) {
     this.task = task;
@@ -21,17 +22,19 @@ public class Interval implements Observer {
   }
   public void stop() {
     clock.stop();
-    finalDate = clock.getDate();
-
   }
 
   @Override
   public void update(Observable o, Object value) {
     task.duration += 2;
+    finalDate = clock.getDate();
+    duration += 2;
+    System.out.println(this);
+    task.update(finalDate);
 
   }
   @Override
   public String toString() {
-    return "interval:                   "  + initialDate + "    " + finalDate + "   " + Duration.between(initialDate, finalDate);
+    return "interval:                   "  + initialDate + "    " + finalDate + "   " + duration;
   }
 }

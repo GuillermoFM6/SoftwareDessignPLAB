@@ -15,8 +15,9 @@ public class Clock extends Observable{
     TimerTask repeatedTask = new TimerTask() {
       public void run() {
         date = LocalDateTime.now();
+        setChanged();
         notifyObservers(date);
-        System.out.println("run() done on " + date);
+        //System.out.println("run() done on " + date);
       }
     };
     timer.scheduleAtFixedRate(repeatedTask, 0, 1000 * period);

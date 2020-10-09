@@ -19,8 +19,8 @@ public class Main {
     task.start();
     wait(4);
     task.stop();
-    System.out.println(task.getInterval());
-    System.out.println(task);
+
+
 
   }
 }

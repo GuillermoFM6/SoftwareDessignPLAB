@@ -29,6 +29,12 @@ abstract class Activity {
     return name;
   }
 
+  public void update(LocalDateTime actualDate){
+    finalDate = actualDate;
+    System.out.println(this);
+
+  }
+
   @Override
   public String toString() {
     return "activity: " + name + "    " + initialDate + "    " + finalDate + "   " + duration;

@@ -5,8 +5,8 @@ public class Project extends Activity{
 
   private List<Activity> activities = new ArrayList<Activity>();
 
-  public Project(String name, Project father) {
-    super(name, father);
+  public Project(String name, Project antecesor) {
+    super(name, antecesor);
   }
 
 
