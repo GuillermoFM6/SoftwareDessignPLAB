@@ -1,6 +1,6 @@
-import java.time.Duration;
-import java.time.LocalDateTime;
+import java.time.*;
 import java.util.*;
+import java.time.format.DateTimeFormatter;
 
 abstract class Activity {
   private String name;
@@ -37,7 +37,8 @@ abstract class Activity {
 
   @Override
   public String toString() {
-    return "activity: " + name + "    " + initialDate + "    " + finalDate + "   " + duration;
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    return "activity: " + name + "    " + initialDate.format(formatter) + "    " + finalDate.format(formatter) + "   " + duration;
   }
 
 }

@@ -1,5 +1,6 @@
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Interval implements Observer {
@@ -11,6 +12,7 @@ public class Interval implements Observer {
 
   public Interval(Task task) {
     this.task = task;
+    clock.addObserver(this);
   }
   public LocalDateTime getInitialDate() {return initialDate;}
 
@@ -35,6 +37,7 @@ public class Interval implements Observer {
   }
   @Override
   public String toString() {
-    return "interval:                   "  + initialDate + "    " + finalDate + "   " + duration;
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    return "interval:                   "  + initialDate.format(formatter) + "    " + finalDate.format(formatter) + "   " + duration;
   }
 }
