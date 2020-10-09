@@ -1,15 +1,19 @@
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.*;
 
 abstract class Activity {
   private String name;
-  private LocalDateTime initialDate;
-  private LocalDateTime finalDate;
-  private double duration;
+  protected Project project;
+  protected LocalDateTime initialDate;
+  protected LocalDateTime finalDate;
+  protected long duration;
 
 
-  public Activity(String name){
+  public Activity(String name, Project antecesor){
     this.name = name;
+    this.project = antecesor;
+    this.duration = 0;
 
   }
 
@@ -23,6 +27,11 @@ abstract class Activity {
 
   public String getName(){
     return name;
+  }
+
+  @Override
+  public String toString() {
+    return "activity: " + name + "    " + initialDate + "    " + finalDate + "   " + duration;
   }
 
 }

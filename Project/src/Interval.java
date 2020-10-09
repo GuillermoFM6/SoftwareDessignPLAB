@@ -1,13 +1,15 @@
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.*;
 
-public class Interval {
+public class Interval implements Observer {
+  private Task task;
   private LocalDateTime initialDate;
   private LocalDateTime finalDate;
   private  Clock clock = new Clock(2);
 
-  public Interval() {
-
+  public Interval(Task task) {
+    this.task = task;
   }
   public LocalDateTime getInitialDate() {return initialDate;}
 
@@ -24,7 +26,12 @@ public class Interval {
   }
 
   @Override
+  public void update(Observable o, Object value) {
+    task.duration += 2;
+
+  }
+  @Override
   public String toString() {
-    return "interval:       "  + initialDate + "    " + finalDate + "   " + Duration.between(initialDate, finalDate);
+    return "interval:                   "  + initialDate + "    " + finalDate + "   " + Duration.between(initialDate, finalDate);
   }
 }

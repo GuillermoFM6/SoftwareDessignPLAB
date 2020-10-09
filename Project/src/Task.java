@@ -3,27 +3,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Task extends Activity {
-  private List<Interval> intervals = new ArrayList<Interval>();
-  private double duration;
+  private Interval interval = new Interval(this);
 
-  public Task(String name) {
-    super(name);
+  public Task(String name, Project antecesor) {
+    super(name, antecesor);
   }
 
-  public void setDuration(double duration) {
-    this.duration = duration;
+  public Interval getInterval(){
+    return interval;
   }
 
-  public long CalculateTaskDuration() {
-    long sum = 0;
-    for (Interval interval : intervals) {
-      sum += Duration.between(interval.getInitialDate(), interval.getFinalDate()).getSeconds();
-    }
-    return sum;
+  public void start() {
+    interval.start();
+    initialDate = interval.getInitialDate();
   }
 
-  public void addInterval(Interval interval) {
-    intervals.add(interval);
+  public void stop() {
+    interval.stop();
+    finalDate = interval.getInitialDate();
+
   }
 
 

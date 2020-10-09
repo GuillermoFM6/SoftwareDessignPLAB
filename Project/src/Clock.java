@@ -1,7 +1,7 @@
 import java.util.*;
 import java.time.*;
 
-public class Clock {
+public class Clock extends Observable{
   private LocalDateTime date;
   private Timer timer;
   private int period; //seconds
@@ -15,6 +15,7 @@ public class Clock {
     TimerTask repeatedTask = new TimerTask() {
       public void run() {
         date = LocalDateTime.now();
+        notifyObservers(date);
         System.out.println("run() done on " + date);
       }
     };
@@ -23,4 +24,5 @@ public class Clock {
   public void stop() {timer.cancel();}
   public int getPeriod() {return period;}
   public LocalDateTime getDate() {return date;}
+
 }
